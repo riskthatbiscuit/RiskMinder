@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 
 const stockPriceDataSchema = new mongoose.Schema({
-  symbol: {
-    type: String,
+  stock: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Stock",
     required: true,
-    trim: true,
   },
   price: {
     type: Number,

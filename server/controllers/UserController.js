@@ -25,9 +25,16 @@ exports.login = async (req, res) => {
     // Perform authentication and generate JWT token as needed
 
     // Example: Check if user exists by email and password match
-    const user = await User.findOne({ email, password });
+    const user = await User.findOne({ email });
 
     if (!user) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    // Compare the provided password with the hashed password
+    const isPasswordCorrect = await user.isCorrectPassword(password);
+
+    if (!isPasswordCorrect) {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
