@@ -11,11 +11,6 @@ const stockSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
-  portfolio: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Portfolio",
-    required: true,
-  },
 });
 
 const Stock = mongoose.model("Stock", stockSchema);
