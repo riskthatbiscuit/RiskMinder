@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+require('dotenv').config();
 
 const app = express();
 
@@ -16,8 +17,8 @@ app.get("/", (req, res) => {
   res.send("Welcome to RiskMinder");
 });
 
-const userRoutes = require('./routes/user');
-app.use('/api/users', userRoutes);
+const Routes = require('./routes');
+app.use('/', Routes);
 
 // Handle unhandled promise rejections globally
 process.on("unhandledRejection", (err) => {
@@ -29,6 +30,9 @@ process.on("unhandledRejection", (err) => {
 const PORT = process.env.PORT || 3001;
 
 // Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+dbConnection.once('open', () => {
+  app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+    console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+  });
 });
