@@ -1,18 +1,31 @@
 const StockPriceData = require("../models/StockPriceData");
 const Stock = require("../models/Stock");
+const AlphaVantageService = require("../services/alphaVantageServices");
 
 // Controller methods for StockPriceData
 exports.createStockPriceData = async (req, res) => {
   try {
     // Extract necessary data from the request body
-    const { stockId, date, price } = req.body;
+    const { stockId, date } = req.query;
 
     // Check if the specified stock exists in the database
-    const existingStock = await Stock.findOne({ stockId });
-
+    const existingStock = await Stock.findOne({ _id: stockId });
+  
     if (!existingStock) {
       return res.status(404).json({ error: "Stock not found" });
     }
+
+    // Fetch stock data from Alpha Vantage
+    const symbol = existingStock.tickerSymbol;
+    const alphaVantageData = await AlphaVantageService.getStockData(symbol);
+
+    if (!alphaVantageData || !alphaVantageData["Time Series (Daily)"]) {
+      return res
+        .status(404)
+        .json({ error: "Stock price data not available" });
+    }
+    // Extract the price from the response (you may need to adjust this based on the API response structure)
+    const price = alphaVantageData["Time Series (Daily)"][date]["4. close"];
 
     // Create a new stock price data entry
     const newStockPriceData = new StockPriceData({ stockId, date, price });
