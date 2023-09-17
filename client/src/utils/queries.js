@@ -4,7 +4,7 @@ import { gql } from '@apollo/client';
 // Important for useQuery: Each query we'd like to be able to perform gets exported out of our queries.js utility
 export const QUERY_STOCKS = gql`
   query allStocks {
-    Stocks {
+    stocks {
       _id
       name
     }

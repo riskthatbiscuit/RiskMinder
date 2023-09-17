@@ -1,5 +1,7 @@
 // Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import Auth from '../utils/auth'
 
 import StockList from '../components/StockList';
 import StockForm from '../components/StockForm';
@@ -8,10 +10,13 @@ import StockForm from '../components/StockForm';
 import { QUERY_STOCKS } from '../utils/queries';
 
 const Portfolio = () => {
-  // Important for useQuery: We pass the query we'd like to execute on component load to the useQuery hook
-  // The useQuery hook will always give back an object, and for the purposes of this app we're using the loading boolean and the data object
-  // The data object will match the same result you'd get if you ran this query within the GraphQL playground
   const { loading, data } = useQuery(QUERY_STOCKS);
+  const navigate = useNavigate()
+
+  const isLoggedIn = Auth.loggedIn()
+  if (!isLoggedIn) {
+    return navigate('/')
+  }
 
   // Important for useQuery: We use the optional chaining operator to get the resulting profile from our query, or fallback to an empty object if the query isn't resolved yet
   const stocks = data?.stocks || [];
