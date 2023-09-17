@@ -8,12 +8,12 @@ const StockPriceDataController = require("../controllers/StockPriceDataControlle
 router.post("/all", StockPriceDataController.createStockPriceDataForAllStocks),
 router.post("/stock", StockPriceDataController.createStockPriceData);
 router.get(
-  "/:stockPriceDataId",
+  "/:stockId",
   StockPriceDataController.getStockPriceDataById
 );
-router.put("/:stockPriceDataId", StockPriceDataController.updateStockPriceData);
+router.put("/:stockId", StockPriceDataController.updateStockPriceData);
 router.delete(
-  "/:stockPriceDataId",
+  "/:stockId",
   StockPriceDataController.deleteStockPriceData
 );
 

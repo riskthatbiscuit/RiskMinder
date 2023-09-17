@@ -3,6 +3,7 @@ const Stock = require("../models/Stock");
 const AlphaVantageService = require("../services/alphaVantageServices");
 
 // Controller methods for StockPriceData
+// Update All Stock Prices
 exports.createStockPriceDataForAllStocks = async (req, res) => {
   try {
     // Fetch all stocks from the database
@@ -71,6 +72,7 @@ exports.createStockPriceDataForAllStocks = async (req, res) => {
   }
 };
 
+// Update One Stock Prices
 exports.createStockPriceData = async (req, res) => {
   try {
     // Extract necessary data from the request body
@@ -124,13 +126,14 @@ exports.createStockPriceData = async (req, res) => {
   }
 };
 
+// Get one Stock Price
 exports.getStockPriceDataById = async (req, res) => {
   try {
-    const stockPriceDataId = req.params.stockPriceDataId;
+    const stockId = req.params.stockId;
 
     // Retrieve stock price data by ID from the database
-    const stockPriceData = await StockPriceData.findById(stockPriceDataId);
-
+    const stockPriceData = await StockPriceData.find({stockId});
+    console.log(stockPriceData)
     if (!stockPriceData) {
       return res.status(404).json({ error: "Stock price data not found" });
     }
@@ -142,14 +145,15 @@ exports.getStockPriceDataById = async (req, res) => {
   }
 };
 
+// Update single Stock Price
 exports.updateStockPriceData = async (req, res) => {
   try {
-    const stockPriceDataId = req.params.stockPriceDataId;
+    const stockId = req.params.stockId;
     const updatedStockPriceData = req.body;
 
     // Update the stock price data in the database
     const updatedData = await StockPriceData.findByIdAndUpdate(
-      stockPriceDataId,
+      stockId,
       updatedStockPriceData,
       {
         new: true, // Return the updated stock price data object
@@ -167,13 +171,14 @@ exports.updateStockPriceData = async (req, res) => {
   }
 };
 
+// Delete single Stock Price Data
 exports.deleteStockPriceData = async (req, res) => {
   try {
-    const stockPriceDataId = req.params.stockPriceDataId;
+    const stockId = req.params.stockId;
 
     // Delete the stock price data from the database
     const deletedData = await StockPriceData.findByIdAndDelete(
-      stockPriceDataId
+      stockId
     );
 
     if (!deletedData) {
