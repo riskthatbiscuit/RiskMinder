@@ -1,0 +1,17 @@
+const axios = require("axios");
+
+function getStockData(symbol) {
+  const apiKey = process.env.ALPHA_VANTAGE_API_KEY;
+  const url = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${apiKey}`;
+
+  return axios
+    .get(url)
+    .then((response) => response.data)
+    .catch((error) => {
+      throw error;
+    });
+}
+
+module.exports = {
+  getStockData,
+};

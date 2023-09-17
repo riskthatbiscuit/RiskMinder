@@ -1,12 +1,12 @@
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <p className="navbar-brand" to="/">
-          Your Logo
-        </p>
+        <Link className="navbar-brand" to="/">
+          Risk Taker
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,14 +21,19 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item">
-              <p className="nav-link" to="/">
+              <Link className="nav-link" to="/">
                 Home
-              </p>
+              </Link>
             </li>
             <li className="nav-item">
-              <p className="nav-link" to="/portfolio">
+              <Link className="nav-link" to="/portfolio">
                 Portfolio
-              </p>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/login">
+                Login
+              </Link>
             </li>
             {/* Add more navigation items as needed */}
           </ul>
@@ -39,3 +44,4 @@ const Header = () => {
 };
 
 export default Header;
+

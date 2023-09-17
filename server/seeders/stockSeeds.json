@@ -1,0 +1,10 @@
+[
+  {
+    "name": "ABC",
+    "stockPrice": [0, 2, 3]
+  },
+  {
+    "name": "TES",
+    "stockPrice": [5, 4, 9]
+  }
+]
