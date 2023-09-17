@@ -24,18 +24,31 @@ exports.createStockPriceData = async (req, res) => {
         .status(404)
         .json({ error: "Stock price data not available" });
     }
-    // Extract the price from the response (you may need to adjust this based on the API response structure)
-    const price = alphaVantageData["Time Series (Daily)"][date]["4. close"];
+    
+    const dailyData = alphaVantageData["Time Series (Daily)"];
 
-    // Create a new stock price data entry
-    const newStockPriceData = new StockPriceData({ stockId, date, price });
+    // Iterate through the available dates and save stock price data
+    const stockPriceDataEntries = [];
 
-    // Save the stock price data to the database
-    await newStockPriceData.save();
+    for (const date in dailyData) {
+      if (dailyData.hasOwnProperty(date)) {
+        const price = dailyData[date]["4. close"];
+
+        // Check if a data point with the same date already exists in the database
+        const existingDataPoint = await StockPriceData.findOne({ stockId, date });
+
+        if (!existingDataPoint) {
+          // Create a new stock price data entry
+          const newStockPriceData = new StockPriceData({ stockId, date, price });
+          await newStockPriceData.save();
+          stockPriceDataEntries.push(newStockPriceData);
+        }
+      }
+    }
 
     res.status(201).json({
       message: "Stock price data created successfully",
-      stockPriceData: newStockPriceData,
+      stockPriceData: stockPriceDataEntries,
     });
   } catch (error) {
     console.error("Error in createStockPriceData:", error);
