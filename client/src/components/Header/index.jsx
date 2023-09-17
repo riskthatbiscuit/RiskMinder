@@ -1,13 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Auth from '../../utils/auth';
 
 const Header = () => {
   const isLoggedIn = Auth.loggedIn()
-  const navigate = useNavigate()
 
   const logout = () => {
     Auth.logout()
-    navigate('/')
+    window.location = '/'
   }
 
   return (

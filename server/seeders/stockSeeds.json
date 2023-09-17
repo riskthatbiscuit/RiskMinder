@@ -1,10 +1,10 @@
 [
   {
-    "name": "ABC",
-    "stockPrice": [0, 2, 3]
+    "company": "Tesla",
+    "ticker": "TSLA"
   },
   {
-    "name": "TES",
-    "stockPrice": [5, 4, 9]
+    "company": "Apple",
+    "ticker": "AAPL"
   }
 ]

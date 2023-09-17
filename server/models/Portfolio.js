@@ -10,21 +10,22 @@ const portfolioSchema = new Schema({
   name: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   description: {
     type: String,
     required: true,
-    unique: true,
+    unique: false,
     trim: true,
   },
   stocks: [
     {
-      genericStockId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "GenericStock",
+      ticker: {
+        type: String,
         required: true,
+        unique: true,
+        trim: true,
       },
       shares: {
         type: Number,

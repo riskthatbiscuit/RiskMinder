@@ -15,7 +15,7 @@ const typeDefs = gql`
   }
 
   type Stock {
-    stockId: String
+    ticker: String
     shares: Int
   }
 
@@ -34,10 +34,12 @@ const typeDefs = gql`
   # The Query type is built-in to GraphQL, so we only need to extend it to include which kinds of information we plan to request in our application
   type Query {
     portfolio: Portfolio
+    genericStocks: [GenericStock]!
   }
 
   # Important for useMutation: We define our Mutation type to inform our entrypoints
   type Mutation {
+    addPortfolioStock(ticker: String!): Portfolio
     createUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }

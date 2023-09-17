@@ -1,13 +1,13 @@
 const db = require('../config/connection');
-const { Stock } = require('../models');
-const stockSeeds = require('./stockSeeds.json');
+const { GenericStock } = require('../models');
+const genericStockSeeds = require("./stockSeeds.json");
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   try {
-    await cleanDB('Stock', 'stocks');
+    await cleanDB("GenericStock", "genericstocks");
     
-    await Stock.create(stockSeeds);
+    await GenericStock.create(genericStockSeeds);
 
     console.log('all done!');
     process.exit(0);
