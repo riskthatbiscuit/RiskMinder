@@ -16,20 +16,21 @@ export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      profile {
+      user {
         _id
-        name
+        email
       }
     }
   }
 `;
 
-// export const ADD_SKILL = gql`
-//   mutation addSkill($profileId: ID!, $skill: String!) {
-//     addSkill(profileId: $profileId, skill: $skill) {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
+export const CREATE_USER = gql`
+  mutation createUser($email: String!, $password: String!) {
+    createUser(email: $email, password: $password) {
+      token
+      user {
+        _id
+      }
+    }
+  }
+`;

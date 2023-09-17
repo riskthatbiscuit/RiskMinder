@@ -1,4 +1,5 @@
-const { Stock } = require('../models');
+const { Stock, User } = require('../models');
+const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   // Important for useQuery: The resolver matches the typeDefs entry point and informs the request of the relevant data
@@ -16,6 +17,27 @@ const resolvers = {
   },
   // Important for useMutation: The resolver matches the typeDefs entry point and informs the request of the relevant data
   Mutation: {
+    createUser: async (parent, { email, password }) => {
+      const user = await User.create({ email, password });
+      const token = signToken(user);
+      return { token, user };
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw AuthenticationError;
+      }
+
+      const isCorrectPassword = await user.isCorrectPassword(password);
+      if (!isCorrectPassword) {
+        throw AuthenticationError;
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
     addStock: async (parent, { name }) => {
       return Stock.create({ name });
     },

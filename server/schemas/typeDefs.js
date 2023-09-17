@@ -7,6 +7,17 @@ const typeDefs = gql`
     stockPrice: [String]!
   }
 
+  type User {
+    _id: ID
+    email: String
+    password: String
+  }
+
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   # Important for useQuery: We define our Query type to inform our entry points
   # The Query type is built-in to GraphQL, so we only need to extend it to include which kinds of information we plan to request in our application
   type Query {
@@ -21,6 +32,8 @@ const typeDefs = gql`
     addStockPrice(stockId: ID!, stockPrice: String!): Stock
     removeStock(stockId: ID!): Stock
     removeStockPrice(stockId: ID!, stockPrice: String!): Stock
+    createUser(email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
   }
 `;
 
