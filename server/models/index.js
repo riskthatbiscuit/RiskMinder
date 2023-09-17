@@ -1,5 +1,5 @@
-// const Portfolio = require('./Portfolio');
 const User = require('./User');
-const Stock = require('./Stock');
+const Portfolio = require('./Portfolio');
+const GenericStock = require("./GenericStock");
 
-module.exports = {Stock, User};
+module.exports = { Portfolio, GenericStock, User };

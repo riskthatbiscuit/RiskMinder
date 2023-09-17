@@ -2,21 +2,17 @@
 import { gql } from '@apollo/client';
 
 // Important for useQuery: Each query we'd like to be able to perform gets exported out of our queries.js utility
-export const QUERY_STOCKS = gql`
-  query allStocks {
-    stocks {
+export const QUERY_PORTFOLIO = gql`
+  query getPortfolio {
+    portfolio {
       _id
+      userId
       name
-    }
-  }
-`;
-
-// Important for Query Variables: To successfully execute this GraphQL query, you would need to provide a non-null ID value for the profileId argument. This value is passed using the $profileId variable, which represents the placeholder for the actual value in the query.
-export const QUERY_SINGLE_STOCK = gql`
-  query singleStock($stockId: ID!) {
-    stock(stockId: $stockId) {
-      _id
-      name
+      description
+      stocks {
+        stockId
+        shares
+      }
     }
   }
 `;
