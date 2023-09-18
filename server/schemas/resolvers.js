@@ -118,7 +118,7 @@ const resolvers = {
       }
 
       let stock = stocks.find((s) => s.ticker === ticker);
-      if (stock.shares > 1) {
+      if (stock.shares > 0) {
         stock.shares--;
       } else {
         stock = {

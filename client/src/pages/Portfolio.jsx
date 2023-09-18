@@ -95,9 +95,9 @@ const Portfolio = () => {
               })}
               <tr>
                 <td>TOTAL</td>
-                <td>{portfolioValue}</td>
+                <td></td>
                 <td>{numStock}</td>
-                <td>D</td>
+                <td>{portfolioValue}</td>
               </tr>
             </tbody>
           </Table>
