@@ -14,6 +14,18 @@ export const ADD_PORTFOLIO_STOCK = gql`
   }
 `;
 
+export const REMOVE_PORTFOLIO_STOCK = gql`
+  mutation removePortfolioStock($ticker: String!) {
+    removePortfolioStock(ticker: $ticker) {
+      _id
+      stocks {
+        ticker
+        shares
+      }
+    }
+  }
+`;
+
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {

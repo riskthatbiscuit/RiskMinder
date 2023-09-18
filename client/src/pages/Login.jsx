@@ -43,7 +43,7 @@ const Login = () => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-             <form onSubmit={handleFormSubmit}>
+            <form onSubmit={handleFormSubmit}>
               <input
                 className="form-input"
                 placeholder="Your email"

@@ -40,6 +40,7 @@ const typeDefs = gql`
   # Important for useMutation: We define our Mutation type to inform our entrypoints
   type Mutation {
     addPortfolioStock(ticker: String!): Portfolio
+    removePortfolioStock(ticker: String!): Portfolio
     createUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }
