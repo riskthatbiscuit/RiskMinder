@@ -24,6 +24,14 @@ const Portfolio = () => {
 
   const genericStocks = genericStocksData?.genericStocks || []
   const portfolio = portfolioData?.portfolio || {};
+  const stocks = portfolio?.stocks || []
+
+  let numStock = 0
+  stocks.map(stock => {
+    numStock += stock.shares
+  })
+
+
 
   const addStock = async (ticker) => {
     try {
@@ -45,6 +53,8 @@ const Portfolio = () => {
     }
   }
 
+  const portfolioValue = 0
+
   return (
     <main>
       <div className="flex-row justify-center">
@@ -62,11 +72,9 @@ const Portfolio = () => {
             </thead>
             <tbody>
               {genericStocks.map(stock => {
-                const stocks = portfolio?.stocks || []
                 const portfolioStock = stocks.find(s => s.ticker === stock.ticker)
                 return (
                   <tr key={stock.ticker}>
-                    {/* <div className="flex-row justify-space-between"> */}
                       <td>{stock.company}</td>
                       <td>{stock.latestPrice}</td>
                       <td>{portfolioStock ? portfolioStock.shares : 0}</td>
@@ -74,10 +82,15 @@ const Portfolio = () => {
                         <button onClick={() => addStock( stock.ticker)}>+</button>
                         <button onClick={() => removeStock( stock.ticker)}>-</button>
                       </td>
-                    {/* </div> */}
                   </tr>
                 )
               })}
+              <tr>
+                <td>TOTAL</td>
+                <td>{portfolioValue}</td>
+                <td>{numStock}</td>
+                <td>D</td>
+              </tr>
             </tbody>
           </Table>
         </div>
