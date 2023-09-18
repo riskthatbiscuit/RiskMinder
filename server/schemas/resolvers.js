@@ -144,32 +144,6 @@ const resolvers = {
 
       return updatedPortfolio;
     },
-
-    // addStock: async (parent, { name }) => {
-    //   return Stock.create({ name });
-    // },
-    // addStockPrice: async (parent, { stockId, stockPrice }) => {
-    //   return Stock.findOneAndUpdate(
-    //     { _id: stockId },
-    //     {
-    //       $addToSet: { stockPrices: stockPrice },
-    //     },
-    //     {
-    //       new: true,
-    //       runValidators: true,
-    //     }
-    //   );
-    // },
-    // removeStock: async (parent, { stockId }) => {
-    //   return Stock.findOneAndDelete({ _id: stockId });
-    // },
-    // removeStockPrice: async (parent, { stockId, stockPrice }) => {
-    //   return Stock.findOneAndUpdate(
-    //     { _id: stockId },
-    //     { $pull: { stockPrices: stockPrice } },
-    //     { new: true }
-    //   );
-    // },
   },
 };
 

@@ -2,26 +2,26 @@
   {
     "company": "Tesla",
     "ticker": "TSLA",
-    "latestPrice": "1.0"
+    "latestPrice": "276.04"
   },
   {
     "company": "Apple",
     "ticker": "AAPL",
-    "latestPrice": "1.0"
+    "latestPrice": "175.74"
   },
   {
     "company": "Google",
     "ticker": "GOOGL",
-    "latestPrice": "1.0"
+    "latestPrice": "138.1"
   },
   {
     "company": "Amazon",
     "ticker": "AMZN",
-    "latestPrice": "1.0"
+    "latestPrice": "200"
   },
   {
     "company": "Microsoft",
     "ticker": "MSFT",
-    "latestPrice": "1.0"
+    "latestPrice": "338.7"
   }
 ]

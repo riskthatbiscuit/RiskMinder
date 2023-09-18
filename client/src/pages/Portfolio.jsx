@@ -29,19 +29,12 @@ const Portfolio = () => {
   let numStock = 0
   let portfolioValue = 0
   stocks.map(stock => {
-    // console.log(stock.ticker)
-    // console.log(genericStocks)
     const genericStock = genericStocks.find(s => stock.ticker === s.ticker)
+    console.log(genericStock)
     let stockLatestPrice = genericStock.latestPrice
-    // console.log(genericStock.latestPrice)
     numStock += stock.shares
     portfolioValue += (stock.shares*stockLatestPrice)
-
-    // let singleCompany = numStock * 
-    // portfolioValue += singleCompany
   })
-
-
 
   const addStock = async (ticker) => {
     try {
@@ -53,7 +46,7 @@ const Portfolio = () => {
     }
   }
 
-    const removeStock = async (ticker) => {
+  const removeStock = async (ticker) => {
     try {
        await removePortfolioStock({
         variables: { ticker },
@@ -76,6 +69,7 @@ const Portfolio = () => {
                 <th>Latest Price</th>
                 <th>Portfolio</th>
                 <th>Buy/Sell</th>
+                <th>Value</th>
               </tr>
             </thead>
             <tbody>
@@ -84,12 +78,15 @@ const Portfolio = () => {
                 return (
                   <tr key={stock.ticker}>
                       <td>{stock.company}</td>
-                      <td>{stock.latestPrice}</td>
+                      <td>${stock.latestPrice}</td>
                       <td>{portfolioStock ? portfolioStock.shares : 0}</td>
                       <td>
                         <button onClick={() => addStock( stock.ticker)}>+</button>
                         <button onClick={() => removeStock( stock.ticker)}>-</button>
                       </td>
+                      <td>
+                        ${stock.latestPrice * (portfolioStock? portfolioStock.shares : 0)}
+                        </td>
                   </tr>
                 )
               })}
@@ -97,7 +94,8 @@ const Portfolio = () => {
                 <td>TOTAL</td>
                 <td></td>
                 <td>{numStock}</td>
-                <td>{portfolioValue}</td>
+                <td></td>
+                <td>${portfolioValue}</td>
               </tr>
             </tbody>
           </Table>
