@@ -1,6 +1,8 @@
 // Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery, useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
+import Table from 'react-bootstrap/Table';
+
 import Auth from '../utils/auth'
 
 import { ADD_PORTFOLIO_STOCK, REMOVE_PORTFOLIO_STOCK } from '../utils/mutations';
@@ -49,25 +51,35 @@ const Portfolio = () => {
         <div className="col-12 col-md-10 my-3">
           <h1>{portfolio.name}</h1>
           <p>{portfolio.description}</p>
-          <ul>
-            {genericStocks.map(stock => {
-              const stocks = portfolio?.stocks || []
-              const portfolioStock = stocks.find(s => s.ticker === stock.ticker)
-              return (
-                <li key={stock.ticker}>
-                  <div className="flex-row justify-space-between">
-                    <p>{stock.company}</p>
-                    <p>{portfolioStock.latestPrice}</p>
-                    <p>{portfolioStock ? portfolioStock.shares : 0}</p>
-                    <div>
-                      <button onClick={() => addStock( stock.ticker)}>+</button>
-                      <button onClick={() => removeStock( stock.ticker)}>-</button>
-                    </div>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>Stock</th>
+                <th>Latest Price</th>
+                <th>Portfolio</th>
+                <th>Buy/Sell</th>
+              </tr>
+            </thead>
+            <tbody>
+              {genericStocks.map(stock => {
+                const stocks = portfolio?.stocks || []
+                const portfolioStock = stocks.find(s => s.ticker === stock.ticker)
+                return (
+                  <tr key={stock.ticker}>
+                    {/* <div className="flex-row justify-space-between"> */}
+                      <td>{stock.company}</td>
+                      <td>{portfolioStock.latestPrice}</td>
+                      <td>{portfolioStock ? portfolioStock.shares : 0}</td>
+                      <td>
+                        <button onClick={() => addStock( stock.ticker)}>+</button>
+                        <button onClick={() => removeStock( stock.ticker)}>-</button>
+                      </td>
+                    {/* </div> */}
+                  </tr>
+                )
+              })}
+            </tbody>
+          </Table>
         </div>
       </div>
     </main>
