@@ -12,6 +12,11 @@ const genericStockSchema = new Schema({
     required: true,
     unique: false,
     trim: true,
+  },
+  latestPrice: {
+    type: Number,
+    required: false, 
+    unique: false, 
   }
 });
 

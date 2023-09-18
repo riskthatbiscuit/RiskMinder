@@ -12,6 +12,7 @@ const typeDefs = gql`
   type GenericStock {
     company: String
     ticker: String
+    latestPrice: Float
   }
 
   type Stock {

@@ -20,6 +20,7 @@ export const QUERY_GENERIC_STOCKS = gql`
     genericStocks {
       company
       ticker
+      latestPrice
     }
   }
 `;

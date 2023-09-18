@@ -1,10 +1,12 @@
 [
   {
     "company": "Tesla",
-    "ticker": "TSLA"
+    "ticker": "TSLA",
+    "latestPrice": "1"
   },
   {
     "company": "Apple",
-    "ticker": "AAPL"
+    "ticker": "AAPL",
+    "latestPrice": "1"
   }
 ]

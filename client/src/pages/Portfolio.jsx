@@ -14,7 +14,7 @@ const Portfolio = () => {
   const isLoggedIn = Auth.loggedIn()
   if (!isLoggedIn) {
     navigate('/');
-    return null;
+    return <p>Please log in to view this page.</p>;
   }
 
   const { data: genericStocksData } = useQuery(QUERY_GENERIC_STOCKS);
@@ -57,6 +57,7 @@ const Portfolio = () => {
                 <li key={stock.ticker}>
                   <div className="flex-row justify-space-between">
                     <p>{stock.company}</p>
+                    <p>{portfolioStock.latestPrice}</p>
                     <p>{portfolioStock ? portfolioStock.shares : 0}</p>
                     <div>
                       <button onClick={() => addStock( stock.ticker)}>+</button>

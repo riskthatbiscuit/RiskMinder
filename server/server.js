@@ -2,6 +2,7 @@ const express = require("express");
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { authMiddleware } = require("./utils/auth");
+const updateStockPrices = require("./utils/updateStockPrices");
 const path = require("path");
 
 const { typeDefs, resolvers } = require("./schemas");
@@ -49,3 +50,4 @@ const startApolloServer = async () => {
 };
 
 startApolloServer();
+updateStockPrices();
