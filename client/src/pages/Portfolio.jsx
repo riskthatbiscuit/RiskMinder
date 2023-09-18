@@ -68,7 +68,7 @@ const Portfolio = () => {
                   <tr key={stock.ticker}>
                     {/* <div className="flex-row justify-space-between"> */}
                       <td>{stock.company}</td>
-                      <td>{portfolioStock.latestPrice}</td>
+                      <td>{stock.latestPrice}</td>
                       <td>{portfolioStock ? portfolioStock.shares : 0}</td>
                       <td>
                         <button onClick={() => addStock( stock.ticker)}>+</button>
