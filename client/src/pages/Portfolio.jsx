@@ -27,8 +27,18 @@ const Portfolio = () => {
   const stocks = portfolio?.stocks || []
 
   let numStock = 0
+  let portfolioValue = 0
   stocks.map(stock => {
+    // console.log(stock.ticker)
+    // console.log(genericStocks)
+    const genericStock = genericStocks.find(s => stock.ticker === s.ticker)
+    let stockLatestPrice = genericStock.latestPrice
+    // console.log(genericStock.latestPrice)
     numStock += stock.shares
+    portfolioValue += (stock.shares*stockLatestPrice)
+
+    // let singleCompany = numStock * 
+    // portfolioValue += singleCompany
   })
 
 
@@ -52,8 +62,6 @@ const Portfolio = () => {
       console.error(e);
     }
   }
-
-  const portfolioValue = 0
 
   return (
     <main>
