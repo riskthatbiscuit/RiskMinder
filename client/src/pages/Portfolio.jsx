@@ -9,18 +9,19 @@ import { QUERY_PORTFOLIO, QUERY_GENERIC_STOCKS } from '../utils/queries';
 const Portfolio = () => {
   const [addPortfolioStock] = useMutation(ADD_PORTFOLIO_STOCK);
   const [removePortfolioStock] = useMutation(REMOVE_PORTFOLIO_STOCK);
-  const { data: genericStocksData } = useQuery(QUERY_GENERIC_STOCKS);
-  const { data } = useQuery(QUERY_PORTFOLIO);
   const navigate = useNavigate()
-
+  
   const isLoggedIn = Auth.loggedIn()
   if (!isLoggedIn) {
     navigate('/');
-    // return null;
+    return null;
   }
 
+  const { data: genericStocksData } = useQuery(QUERY_GENERIC_STOCKS);
+  const { data: portfolioData } = useQuery(QUERY_PORTFOLIO);
+
   const genericStocks = genericStocksData?.genericStocks || []
-  const portfolio = data?.portfolio || {};
+  const portfolio = portfolioData?.portfolio || {};
 
   const addStock = async (ticker) => {
     try {
@@ -50,7 +51,7 @@ const Portfolio = () => {
           <p>{portfolio.description}</p>
           <ul>
             {genericStocks.map(stock => {
-              const stocks = portfolio.stocks || []
+              const stocks = portfolio?.stocks || []
               const portfolioStock = stocks.find(s => s.ticker === stock.ticker)
               return (
                 <li key={stock.ticker}>
@@ -58,8 +59,8 @@ const Portfolio = () => {
                     <p>{stock.company}</p>
                     <p>{portfolioStock ? portfolioStock.shares : 0}</p>
                     <div>
-                      <button onClick={() => addStock(stock.ticker)}>+</button>
-                      <button onClick={() => removeStock(stock.ticker)}>-</button>
+                      <button onClick={() => addStock( stock.ticker)}>+</button>
+                      <button onClick={() => removeStock( stock.ticker)}>-</button>
                     </div>
                   </div>
                 </li>

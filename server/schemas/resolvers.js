@@ -19,12 +19,17 @@ const resolvers = {
     createUser: async (parent, { email, password }) => {
       const user = await User.create({ email, password });
 
+      try{
       await Portfolio.create({
         userId: user._id,
         name: "My Portfolio",
-        description: "Test portfolio",
+        description: email,
         stocks: [],
       });
+    } catch (error) {
+      console.log("Portfolio not created", error);
+      throw error;
+    }
 
       const token = signToken(user);
 
