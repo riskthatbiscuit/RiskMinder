@@ -10,9 +10,10 @@ async function updateStockPrices() {
     for (const stock of stocks) {
       const symbol = stock.ticker;
       const stockData = await getStockData(symbol);
+      
+      const lastRefreshed = stockData["Meta Data"]["3. Last Refreshed"];
 
-      stock.latestPrice =
-        stockData["Time Series (Daily)"]["2023-09-14"]["4. close"];
+      stock.latestPrice = stockData["Time Series (Daily)"][lastRefreshed]["4. close"];
 
       await stock.save();
     }
