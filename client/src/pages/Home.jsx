@@ -5,7 +5,7 @@ const Home = () => {
     <main>
       <div>
         <h1>Welcome to Risk Taker</h1>
-        <p>Risk taker is an application that does a thing and stuff and its great really really really great</p>
+        <p>Managing your investments</p>
         <button
           className="btn btn-block btn-info"
           style={{ cursor: 'pointer' }}
