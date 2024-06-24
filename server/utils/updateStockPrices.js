@@ -1,27 +1,83 @@
 // server/utils/updateStockPrices.js
 
-const GenericStock = require("../models/GenericStock");
-const { getStockData } = require("./alphaVantageServices");
+const GenericStock = require('../models/GenericStock')
+const { getStockData } = require('./alphaVantageServices')
 
 async function updateStockPrices() {
   try {
-    const stocks = await GenericStock.find();
+    const stocks = await GenericStock.find()
 
     for (const stock of stocks) {
-      const symbol = stock.ticker;
-      const stockData = await getStockData(symbol);
-      
-      const lastRefreshed = stockData["Meta Data"]["3. Last Refreshed"];
+      const symbol = stock.ticker
+      const stockData = await getStockData(symbol)
 
-      stock.latestPrice = stockData["Time Series (Daily)"][lastRefreshed]["4. close"];
+      if (
+        !stockData ||
+        !stockData['Meta Data'] ||
+        !stockData['Time Series (Daily)']
+      ) {
+        console.warn(`Data for ${symbol} is not available or limit reached.`)
+        continue
+      }
 
-      await stock.save();
+      const lastRefreshed = stockData['Meta Data']['3. Last Refreshed']
+      const latestPrice =
+        stockData['Time Series (Daily)'][lastRefreshed]['4. close']
+
+      if (!latestPrice) {
+        console.warn(`Latest price for ${symbol} is not available.`)
+        continue
+      }
+
+      stock.latestPrice = latestPrice
+      await stock.save()
     }
-
-    console.log("Stock prices updated successfully.");
   } catch (error) {
-    console.error("Error updating stock prices:", error);
+    console.error('Error updating stock prices:', error)
   }
 }
-console.log("did it work?")
-module.exports = updateStockPrices;
+
+async function updateLast10DaysPrices() {
+  try {
+    const stocks = await GenericStock.find()
+
+    for (const stock of stocks) {
+      const symbol = stock.ticker
+      const stockData = await getStockData(symbol)
+
+      // Check if the expected data is present
+      if (
+        !stockData ||
+        !stockData['Meta Data'] ||
+        !stockData['Time Series (Daily)']
+      ) {
+        console.warn(`Data for ${symbol} is not available or limit reached.`)
+        continue // Skip to the next iteration
+      }
+
+      const timeSeries = stockData['Time Series (Daily)']
+      const dates = Object.keys(timeSeries).sort().reverse().slice(0, 10) // Get last 10 days
+
+      // Check if dates array is empty, indicating missing data
+      if (dates.length === 0) {
+        console.warn(`No available data for the last 10 days for ${symbol}.`)
+        continue // Skip to the next iteration
+      }
+
+      const last10DaysPrices = dates.map((date) => ({
+        date,
+        price: timeSeries[date]['4. close'],
+      }))
+
+      // Assuming your GenericStock model has a field for storing the last 10 days prices
+      stock.last10DaysPrices = last10DaysPrices
+
+      await stock.save()
+    }
+  } catch (error) {
+    console.error('Error updating last 10 days stock prices:', error)
+  }
+}
+
+
+module.exports = { updateStockPrices, updateLast10DaysPrices }

@@ -3,8 +3,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -30,9 +28,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
+      <div className="flex flex-col justify-start min-h-screen">
         <Header />
-        <div className="container">
+        <div className="mx-auto flex-grow max-w-screen-md">
           <Outlet />
         </div>
         <Footer />

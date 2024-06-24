@@ -1,5 +1,19 @@
 const { Schema, model } = require("mongoose");
 
+const stockHistorySchema = new Schema(
+  {
+    date: {
+      type: Date,
+      required: true,
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+  },
+  { _id: false },
+)
+
 const genericStockSchema = new Schema({
   company: {
     type: String,
@@ -15,10 +29,11 @@ const genericStockSchema = new Schema({
   },
   latestPrice: {
     type: Number,
-    required: false, 
-    unique: false, 
-  }
-});
+    required: false,
+    unique: false,
+  },
+  history: [stockHistorySchema],
+})
 
 const GenericStock = model("GenericStock", genericStockSchema);
 

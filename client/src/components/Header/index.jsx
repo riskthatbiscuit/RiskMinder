@@ -10,32 +10,34 @@ const Header = () => {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
+    <nav className="bg-gray-100 shadow-md">
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
+        <Link className="text-xl font-bold text-gray-900 hover:text-gray-700" to="/">
           Risk Taker
         </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              {isLoggedIn ? <button className="nav-link" onClick={logout}>
-                Logout
-              </button> : <Link className="nav-link" to="/login">
-                Login
-              </Link>}
-            </li>
-          </ul>
+        <div className="flex items-center">
+
+          <div className="ml-auto">
+            <ul className="flex items-center space-x-4">
+              <li>
+                {isLoggedIn ? (
+                  <button
+                    className="px-4 py-2 text-sm text-gray-800 bg-gray-200 rounded hover:bg-gray-300"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link
+                    className="px-4 py-2 text-sm text-gray-800 bg-gray-200 rounded hover:bg-gray-300"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
@@ -43,4 +45,3 @@ const Header = () => {
 };
 
 export default Header;
-

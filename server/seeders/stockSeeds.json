@@ -2,26 +2,37 @@
   {
     "company": "Tesla",
     "ticker": "TSLA",
-    "latestPrice": "276.04"
-  },
+    "latestPrice": "276.04",
+    "history": [{"date": "2021-01-01", "price": "705.67"}]
+    },
   {
     "company": "Apple",
     "ticker": "AAPL",
-    "latestPrice": "175.74"
+    "latestPrice": "175.74",
+    "history": [{ "date": "2021-01-01", "price": "705.67" }]
   },
   {
     "company": "Google",
     "ticker": "GOOGL",
-    "latestPrice": "138.1"
+    "latestPrice": "138.1",
+    "history": [{ "date": "2021-01-01", "price": "705.67" }]
   },
   {
     "company": "Amazon",
     "ticker": "AMZN",
-    "latestPrice": "200"
+    "latestPrice": "200",
+    "history": [{ "date": "2021-01-01", "price": "705.67" }]
   },
   {
     "company": "Microsoft",
     "ticker": "MSFT",
-    "latestPrice": "338.7"
+    "latestPrice": "338.7",
+    "history": [{ "date": "2021-01-01", "price": "705.67" }]
+  },
+  {
+    "company": "S&P 500",
+    "ticker": "VOO",
+    "latestPrice": "501.78",
+    "history": [{ "date": "2021-01-01", "price": "705.67" }]
   }
 ]

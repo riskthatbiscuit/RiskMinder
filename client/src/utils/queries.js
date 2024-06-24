@@ -21,6 +21,10 @@ export const QUERY_GENERIC_STOCKS = gql`
       company
       ticker
       latestPrice
+      history {
+        date
+        price
+      }
     }
   }
 `;

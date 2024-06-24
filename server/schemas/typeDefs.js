@@ -13,6 +13,12 @@ const typeDefs = gql`
     company: String
     ticker: String
     latestPrice: Float
+    history: [StockHistory]
+  }
+
+  type StockHistory {
+    date: String
+    price: Float
   }
 
   type Stock {
