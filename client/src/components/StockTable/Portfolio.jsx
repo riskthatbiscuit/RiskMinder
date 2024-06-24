@@ -1,5 +1,6 @@
 // Important for useQuery: We import the useQuery hook from @apollo/client
 import { useQuery, useMutation } from '@apollo/client'
+import StockHistoryGraph from './StockGraph'
 
 import { ADD_PORTFOLIO_STOCK, REMOVE_PORTFOLIO_STOCK } from '../../utils/mutations'
 import { QUERY_PORTFOLIO, QUERY_GENERIC_STOCKS } from '../../utils/queries'
@@ -71,7 +72,7 @@ const StockTable = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                   >
-                    Price History
+                    10 Day Price History
                   </th>
                   <th
                     scope="col"
@@ -107,10 +108,7 @@ const StockTable = () => {
                         ${stock.latestPrice}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        $
-                        {stock.history[stock.history.length - 1].price.toFixed(
-                          2,
-                        )}
+                        <StockHistoryGraph stockHistory={stock.history}/>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {portfolioStock ? portfolioStock.shares : 0}

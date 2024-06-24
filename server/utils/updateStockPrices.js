@@ -70,8 +70,8 @@ async function updateLast10DaysPrices() {
       }))
 
       // Assuming your GenericStock model has a field for storing the last 10 days prices
-      stock.last10DaysPrices = last10DaysPrices
-
+      stock.history = last10DaysPrices
+console.log(stock)
       await stock.save()
     }
   } catch (error) {

@@ -30,7 +30,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="flex flex-col justify-start min-h-screen">
         <Header />
-        <div className="mx-auto flex-grow max-w-screen-md">
+        <div className="mx-auto flex-grow max-w-screen-lg">
           <Outlet />
         </div>
         <Footer />
