@@ -34,6 +34,21 @@ const portfolioSchema = new Schema({
       },
     },
   ],
+  currencyholding: [
+    {
+      currencyheld: {
+        type: String,
+        required: true,
+        unique: false,
+        trim: true,
+      },
+      valueheld: {
+        type: Number,
+        required: true,
+        min: 0,
+      },
+    },
+  ]
 });
 
 const Portfolio = model("Portfolio", portfolioSchema);

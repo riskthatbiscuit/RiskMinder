@@ -101,19 +101,19 @@ const StockTable = () => {
                   )
                   return (
                     <tr key={stock.ticker}>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                         {stock.company}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                         ${stock.latestPrice}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                         <StockHistoryGraph stockHistory={stock.history}/>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                         {portfolioStock ? portfolioStock.shares : 0}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm font-medium">
                         <button
                           className="text-lg bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow hover:shadow-lg"
                           onClick={() => addStock(stock.ticker)}
@@ -127,7 +127,7 @@ const StockTable = () => {
                           Sell
                         </button>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                         $
                         {(
                           stock.latestPrice *
@@ -138,16 +138,16 @@ const StockTable = () => {
                   )
                 })}
                 <tr className="bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <td className="px-6 py-1 whitespace-nowrap text-sm font-medium text-gray-900">
                     TOTAL
                   </td>
                   <td></td>
                   <td></td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                     {numStock}
                   </td>
                   <td></td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-1 whitespace-nowrap text-sm text-gray-500">
                     ${portfolioValue.toFixed(2)}
                   </td>
                 </tr>

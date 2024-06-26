@@ -25,7 +25,7 @@ const StockHistoryGraph = ({ stockHistory }) => {
   return (
     <div style={{ display: 'flex', alignItems: 'center' }}>
       <LineChart width={150} height={50} data={reversedStockHistory}>
-        <YAxis domain={[minValue, maxValue]} hide={true} />
+        {/* <YAxis domain={[minValue, maxValue]} hide={true} /> */}
         <Line type="monotone" dataKey="price" />
       </LineChart>
       {/* Display the percentage change to the right of the graph */}

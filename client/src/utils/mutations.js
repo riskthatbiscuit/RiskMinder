@@ -1,5 +1,5 @@
 // Important for useMutation: We bring in gql from the @apollo/client library to allow us to parse mutations (and queries) as template literals
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 // Important for useMutation: Each mutation we'd like to be able to perform gets exported out of our mutations.js utility
 export const ADD_PORTFOLIO_STOCK = gql`
@@ -12,7 +12,7 @@ export const ADD_PORTFOLIO_STOCK = gql`
       }
     }
   }
-`;
+`
 
 export const REMOVE_PORTFOLIO_STOCK = gql`
   mutation removePortfolioStock($ticker: String!) {
@@ -24,7 +24,19 @@ export const REMOVE_PORTFOLIO_STOCK = gql`
       }
     }
   }
-`;
+`
+
+export const ADD_PORTFOLIO_CURRENCY = gql`
+  mutation addCurrencyHolding($currencyheld: String!, $valueheld: Float!) {
+    addCurrencyHolding(currencyheld: $currencyheld, valueheld: $valueheld) {
+      _id
+      currencyholding {
+        currencyheld
+        valueheld
+      }
+    }
+  }
+`
 
 export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
@@ -36,7 +48,7 @@ export const LOGIN_USER = gql`
       }
     }
   }
-`;
+`
 
 export const CREATE_USER = gql`
   mutation createUser($email: String!, $password: String!) {
@@ -47,4 +59,4 @@ export const CREATE_USER = gql`
       }
     }
   }
-`;
+`

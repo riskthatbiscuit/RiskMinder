@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from '@apollo/client'
 
 export const QUERY_PORTFOLIO = gql`
   query getPortfolio {
@@ -11,9 +11,13 @@ export const QUERY_PORTFOLIO = gql`
         ticker
         shares
       }
+      currencyholding {
+        currencyheld
+        valueheld
+      }
     }
   }
-`;
+`
 
 export const QUERY_GENERIC_STOCKS = gql`
   query getGenericStocks {
@@ -27,4 +31,15 @@ export const QUERY_GENERIC_STOCKS = gql`
       }
     }
   }
-`;
+`
+export const QUERY_CURRENCIES = gql`
+  query getCurrency {
+    currency {
+      code
+      name
+      valueInBase
+      base
+      lastUpdated
+    }
+  }
+`

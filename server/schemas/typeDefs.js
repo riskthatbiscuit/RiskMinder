@@ -1,4 +1,4 @@
-const gql = require('graphql-tag');
+const gql = require('graphql-tag')
 
 const typeDefs = gql`
   type Portfolio {
@@ -7,6 +7,7 @@ const typeDefs = gql`
     name: String
     description: String
     stocks: [Stock]
+    currencyholding: [CurrencyHolding]
   }
 
   type GenericStock {
@@ -26,6 +27,11 @@ const typeDefs = gql`
     shares: Int
   }
 
+  type CurrencyHolding {
+    currencyheld: String
+    valueheld: Float
+  }
+
   type User {
     _id: ID
     email: String
@@ -37,20 +43,30 @@ const typeDefs = gql`
     user: User
   }
 
+  type Currency {
+    code: String
+    name: String
+    valueInBase: Float
+    base: String
+    lastUpdated: String
+  }
+
   # Important for useQuery: We define our Query type to inform our entry points
   # The Query type is built-in to GraphQL, so we only need to extend it to include which kinds of information we plan to request in our application
   type Query {
     portfolio: Portfolio
     genericStocks: [GenericStock]!
+    currency: [Currency]!
   }
 
   # Important for useMutation: We define our Mutation type to inform our entrypoints
   type Mutation {
     addPortfolioStock(ticker: String!): Portfolio
     removePortfolioStock(ticker: String!): Portfolio
+    addCurrencyHolding(currencyheld: String!, valueheld: Float!): Portfolio
     createUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }
-`;
+`
 
-module.exports = typeDefs;
+module.exports = typeDefs

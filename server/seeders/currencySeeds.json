@@ -1,0 +1,58 @@
+[
+  {
+    "code": "USD",
+    "name": "US Dollar",
+    "valueInBase": 1,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "EUR",
+    "name": "Euro",
+    "valueInBase": 1.18,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "GBP",
+    "name": "British Pound",
+    "valueInBase": 1.38,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "JPY",
+    "name": "Japanese Yen",
+    "valueInBase": 0.0091,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "AUD",
+    "name": "Australian Dollar",
+    "valueInBase": 0.74,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "CAD",
+    "name": "Canadian Dollar",
+    "valueInBase": 0.79,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "CHF",
+    "name": "Swiss Franc",
+    "valueInBase": 1.09,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  },
+  {
+    "code": "CNY",
+    "name": "Chinese Yuan",
+    "valueInBase": 0.15,
+    "base": "USD",
+    "lastUpdated": "2023-04-01T00:00:00Z"
+  }
+]
