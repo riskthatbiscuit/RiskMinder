@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  uri: MONGODB_URI || '/graphql',
+  uri: process.env.MONGODB_URI || '/graphql',
 })
 
 const authLink = setContext((_, { headers }) => {
