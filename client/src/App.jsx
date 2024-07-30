@@ -7,7 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  uri: import.meta.env.VITE_APP_GRAPHQL_URI || 'http://localhost:3001/graphql',
+  uri: import.meta.env.VITE_MONGODB_URI || 'http://localhost:3001/graphql',
 
   credentials: 'same-origin',
 })

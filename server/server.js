@@ -35,7 +35,7 @@ const startApolloServer = async () => {
     }),
   )
 
-  const MONGODB_URI = process.env.MONGODB_URI || 'your-default-mongodb-uri'
+  const MONGODB_URI = process.env.MONGODB_URI || 'https://localhost:27017/RiskMinderDB'
 
   mongoose
     .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
