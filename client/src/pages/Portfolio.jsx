@@ -2,6 +2,7 @@
 
 import StockTable from '../components/StockTable/Portfolio'
 import CurrencyTable from '../components/StockTable/Currency'
+import Accounts from '../components/StockTable/Accounts'
 import { useNavigate } from 'react-router-dom'
 import Auth from '../utils/auth'
 
@@ -19,6 +20,7 @@ const Portfolio = () => {
       <StockTable />
       <div className="my-10"></div>
       <CurrencyTable />
+      <Accounts />
     </main>
   )
 }

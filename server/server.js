@@ -2,11 +2,11 @@ const express = require('express')
 const { ApolloServer } = require('@apollo/server')
 const { expressMiddleware } = require('@apollo/server/express4')
 const { authMiddleware } = require('./utils/auth')
-const {
-  updateStockPrices,
-  updateLast10DaysPrices,
-} = require('./utils/updateStockPrices')
-const { updateExchangeRates } = require('./utils/updateExchangeRates')
+// const {
+//   updateStockPrices,
+//   updateLast10DaysPrices,
+// } = require('./utils/updateStockPrices')
+// const { updateExchangeRates } = require('./utils/updateExchangeRates')
 const path = require('path')
 
 const { typeDefs, resolvers } = require('./schemas')
@@ -53,7 +53,7 @@ const startApolloServer = async () => {
   })
 }
 
-updateStockPrices()
-updateLast10DaysPrices()
-updateExchangeRates()
+// updateStockPrices()
+// updateLast10DaysPrices()
+// updateExchangeRates()
 startApolloServer()

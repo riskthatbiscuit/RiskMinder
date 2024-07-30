@@ -43,3 +43,24 @@ export const QUERY_CURRENCIES = gql`
     }
   }
 `
+export const ACCOUNTS_BY_ID_QUERY = gql`
+query AccountsById {
+  accountsById {
+    _id
+    userId{
+      id 
+      email 
+    }
+    amount
+    currency {
+      code
+      name
+      valueInBase
+      base
+      lastUpdated
+    }
+    interestRate
+    bank
+  }
+}
+`

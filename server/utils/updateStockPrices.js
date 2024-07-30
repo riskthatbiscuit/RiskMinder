@@ -71,13 +71,11 @@ async function updateLast10DaysPrices() {
 
       // Assuming your GenericStock model has a field for storing the last 10 days prices
       stock.history = last10DaysPrices
-console.log(stock)
       await stock.save()
     }
   } catch (error) {
     console.error('Error updating last 10 days stock prices:', error)
   }
 }
-
 
 module.exports = { updateStockPrices, updateLast10DaysPrices }

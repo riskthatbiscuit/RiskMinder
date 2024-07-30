@@ -60,3 +60,29 @@ export const CREATE_USER = gql`
     }
   }
 `
+
+export const ADD_ACCOUNT_MUTATION = gql`
+  mutation addAccount(
+    $amount: Float!
+    $currency: String!
+    $interestRate: Float!
+    $bank: String!
+  ) {
+    addAccount(
+      amount: $amount
+      currency: $currency
+      interestRate: $interestRate
+      bank: $bank
+    ) {
+      _id
+      }
+  }
+`
+
+export const REMOVE_ACCOUNT_MUTATION = gql`
+mutation removeAccount($accountId: ID!) {
+  removeAccount(accountId: $accountId) {
+    _id
+  }
+}
+`

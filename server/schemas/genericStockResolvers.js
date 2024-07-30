@@ -1,4 +1,4 @@
-const { GenericStock } = require('../models')
+const { GenericStock, Portfolio } = require('../models')
 
 const genericStockResolvers = {
   Query: {

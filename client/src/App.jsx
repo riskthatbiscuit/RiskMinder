@@ -7,8 +7,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
-});
+  uri: import.meta.env.VITE_APP_GRAPHQL_URI || 'http://localhost:3001/graphql',
+
+  credentials: 'same-origin',
+})
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');

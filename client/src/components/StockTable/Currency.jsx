@@ -29,16 +29,6 @@ const CurrencyTable = () => {
     }
   }
 
-  let portfolioValue = 0
-  currencies.forEach((currency) => {
-    // Find the currency holding in currencyHoldings, not in currencies
-    const currencyHolding = currencyHoldings.find(
-      (holding) => holding.currencyheld === currency.code,
-    )
-    let currencyValueInBase = currencyHolding?.valueheld || 0
-    portfolioValue += currencyValueInBase
-  })
-
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -129,7 +119,7 @@ const CurrencyTable = () => {
                         )
                         return (
                           total +
-                          (currencyHolding?.valueheld || 0) *
+                          (currencyHolding?.valueheld || 0) /
                             parseFloat(currency.valueInBase)
                         )
                       }, 0)

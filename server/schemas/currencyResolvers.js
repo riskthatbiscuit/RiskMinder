@@ -1,4 +1,4 @@
-const {Currency} = require('../models');
+const {Currency, Portfolio} = require('../models');
 
 const currencyResolvers = {
   Query: {
